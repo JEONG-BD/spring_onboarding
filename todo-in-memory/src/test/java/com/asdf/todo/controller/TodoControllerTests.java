@@ -23,7 +23,7 @@ import java.util.Collections;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(TodoController.class)
-public class TestControllerTests {
+public class TodoControllerTests {
 
     @Autowired
     private MockMvc mockMvc;

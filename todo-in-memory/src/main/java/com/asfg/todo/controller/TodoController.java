@@ -22,10 +22,6 @@ public class TodoController {
         this.todoService = todoService;
     }
 
-    @PostMapping
-    public Todo save(Todo todo){
-        return todoService.save(todo);
-    }
 
     @GetMapping
     @Operation(summary = "전체 작업 조회", description = "전체 잔업 조히")

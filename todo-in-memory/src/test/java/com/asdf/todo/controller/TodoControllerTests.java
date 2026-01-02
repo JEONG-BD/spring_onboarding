@@ -6,9 +6,8 @@ import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.asfg.todo.controller.TodoController;
-import com.asfg.todo.model.Todo;
-import com.asfg.todo.service.TodoService;
+import com.asdf.todo.model.Todo;
+import com.asdf.todo.service.TodoService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,9 +72,9 @@ public class TodoControllerTests {
 
         given(todoService.save(any(Todo.class))).willReturn(todo);
 
-        mockMvc.perform(post("/api/todo/1")
+        mockMvc.perform(post("/api/todos/v1")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"title\"} : \"New Todo\"}"))
+                .content("{\"title\" : \"New Todo\"}"))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").value(1L))
                 .andExpect(jsonPath("$.title").value("New Todo"));
@@ -97,7 +96,7 @@ public class TodoControllerTests {
 
         mockMvc.perform(put("/api/todos/v1/1")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\title\": \"Updated Todo\"}"))
+                .content("{\"title\": \"Updated Todo\"}"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1L))
                 .andExpect(jsonPath("$.title").value("Updated Todo"));

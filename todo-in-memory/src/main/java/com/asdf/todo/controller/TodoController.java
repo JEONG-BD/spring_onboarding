@@ -1,7 +1,7 @@
-package com.asfg.todo.controller;
+package com.asdf.todo.controller;
 
-import com.asfg.todo.model.Todo;
-import com.asfg.todo.service.TodoService;
+import com.asdf.todo.model.Todo;
+import com.asdf.todo.service.TodoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -15,9 +15,9 @@ import java.util.List;
 @RequestMapping("/api/todos/v1")
 public class TodoController {
 
-    @Autowired
     private final TodoService todoService;
 
+    @Autowired
     public TodoController(TodoService todoService) {
         this.todoService = todoService;
     }

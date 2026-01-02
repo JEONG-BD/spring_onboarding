@@ -1,6 +1,6 @@
-package com.asfg.todo.repository;
+package com.asdf.todo.repository;
 
-import com.asfg.todo.model.Todo;
+import com.asdf.todo.model.Todo;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

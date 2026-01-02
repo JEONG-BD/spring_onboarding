@@ -1,7 +1,7 @@
-package com.asfg.todo.service;
+package com.asdf.todo.service;
 
-import com.asfg.todo.model.Todo;
-import com.asfg.todo.repository.TodoInMemoryRepository;
+import com.asdf.todo.model.Todo;
+import com.asdf.todo.repository.TodoInMemoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +10,9 @@ import java.util.List;
 @Service
 public class TodoService {
 
-    @Autowired
     private final TodoInMemoryRepository todoRepository;
 
+    @Autowired
     public TodoService(TodoInMemoryRepository todoRepository) {
         this.todoRepository = todoRepository;
     }

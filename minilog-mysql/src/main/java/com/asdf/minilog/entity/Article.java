@@ -1,4 +1,4 @@
-package com.adsf.minilog.entity;
+package com.asdf.minilog.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,32 +12,24 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(
-        name = "follows",
-         indexes = {
-                @Index(name = "idx_follower_id", columnList = "follower_id"),
-                @Index(name = "idx_followee_id", columnList = "followee_id"),
-         },
-        uniqueConstraints = {@UniqueConstraint(columnNames = {"follower_id", "followee_id"})}
-)
-@Data
+@Table(name = "articles")
 @Builder
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
+@AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class Follow {
+public class Article {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "follower_id", nullable = false)
-    private User follwer;
+    @Column(columnDefinition="TEXT")
+    private String content;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "followee_id", nullable = false)
-    private User follwee;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="author_id", nullable = false)
+    private User author;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
@@ -46,6 +38,5 @@ public class Follow {
     @LastModifiedDate
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
-
 
 }

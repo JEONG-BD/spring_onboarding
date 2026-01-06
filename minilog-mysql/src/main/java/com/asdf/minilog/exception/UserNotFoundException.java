@@ -1,4 +1,4 @@
-package com.adsf.minilog.exception;
+package com.asdf.minilog.exception;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(String message) {

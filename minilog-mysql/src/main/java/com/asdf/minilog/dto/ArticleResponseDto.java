@@ -1,4 +1,4 @@
-package com.adsf.minilog.dto;
+package com.asdf.minilog.dto;
 
 import lombok.Builder;
 import lombok.Data;

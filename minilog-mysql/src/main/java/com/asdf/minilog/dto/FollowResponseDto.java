@@ -1,4 +1,4 @@
-package com.adsf.minilog.dto;
+package com.asdf.minilog.dto;
 
 import lombok.Builder;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.NonNull;
 
 @Builder
 @Data
-public class FollowRequestDto {
+public class FollowResponseDto {
 
     @NonNull private Long followerId;
     @NonNull private Long followeeId;

@@ -1,4 +1,4 @@
-package com.adsf.minilog.exception;
+package com.asdf.minilog.exception;
 
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;

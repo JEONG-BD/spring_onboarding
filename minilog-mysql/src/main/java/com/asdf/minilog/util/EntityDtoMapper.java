@@ -1,13 +1,12 @@
-package com.adsf.minilog.util;
+package com.asdf.minilog.util;
 
 
-import com.adsf.minilog.dto.ArticleResponseDto;
-import com.adsf.minilog.dto.FollowResponseDto;
-import com.adsf.minilog.dto.UserRequestDto;
-import com.adsf.minilog.dto.UserResponseDto;
-import com.adsf.minilog.entity.Article;
-import com.adsf.minilog.entity.Follow;
-import com.adsf.minilog.entity.User;
+import com.asdf.minilog.dto.ArticleResponseDto;
+import com.asdf.minilog.dto.FollowResponseDto;
+import com.asdf.minilog.dto.UserResponseDto;
+import com.asdf.minilog.entity.Article;
+import com.asdf.minilog.entity.Follow;
+import com.asdf.minilog.entity.User;
 
 public class EntityDtoMapper {
     public static ArticleResponseDto toDto(Article article){

@@ -1,4 +1,4 @@
-package com.adsf.minilog.repository;
+package com.asdf.minilog.repository;
 
 import com.adsf.minilog.entity.Article;
 import org.springframework.data.jpa.repository.JpaRepository;

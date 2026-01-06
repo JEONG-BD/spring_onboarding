@@ -1,4 +1,4 @@
-package com.adsf.minilog.entity;
+package com.asdf.minilog.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,34 +10,34 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
+@Table(
+        name = "follows",
+         indexes = {
+                @Index(name = "idx_follower_id", columnList = "follower_id"),
+                @Index(name = "idx_followee_id", columnList = "followee_id"),
+         },
+        uniqueConstraints = {@UniqueConstraint(columnNames = {"follower_id", "followee_id"})}
+)
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "users")
+@NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class User {
+public class Follow {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "follower_id", nullable = false)
+    private User follwer;
 
-    @Column(nullable = false, unique = true)
-    private String username;
-
-    @Column(nullable = false)
-    private String password;
-
-    @OneToMany(
-            mappedBy = "author",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.LAZY)
-    private List<Article> articles;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "followee_id", nullable = false)
+    private User follwee;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)

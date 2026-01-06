@@ -1,4 +1,4 @@
-package com.adsf.minilog.entity;
+package com.asdf.minilog.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,26 +10,34 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-@Table(name = "articles")
-@Builder
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "users")
 @EntityListeners(AuditingEntityListener.class)
-public class Article {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition="TEXT")
-    private String content;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="author_id", nullable = false)
-    private User author;
+    @Column(nullable = false, unique = true)
+    private String username;
+
+    @Column(nullable = false)
+    private String password;
+
+    @OneToMany(
+            mappedBy = "author",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.LAZY)
+    private List<Article> articles;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
@@ -38,5 +46,6 @@ public class Article {
     @LastModifiedDate
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
+
 
 }

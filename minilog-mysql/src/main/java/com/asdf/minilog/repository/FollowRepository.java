@@ -1,4 +1,4 @@
-package com.adsf.minilog.repository;
+package com.asdf.minilog.repository;
 
 import com.adsf.minilog.entity.Follow;
 import org.springframework.data.jpa.repository.JpaRepository;

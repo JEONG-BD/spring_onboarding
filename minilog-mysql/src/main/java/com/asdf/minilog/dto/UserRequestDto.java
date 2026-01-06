@@ -1,4 +1,4 @@
-package com.adsf.minilog.dto;
+package com.asdf.minilog.dto;
 
 import lombok.Builder;
 import lombok.Data;
@@ -6,8 +6,9 @@ import lombok.NonNull;
 
 @Data
 @Builder
-public class UserResponseDto {
+public class UserRequestDto {
 
-    @NonNull private Long id;
     @NonNull private String username;
+    @NonNull private String password;
+
 }

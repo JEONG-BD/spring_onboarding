@@ -1,0 +1,22 @@
+package com.adsf.minilog.repository;
+
+import com.adsf.minilog.entity.Article;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface ArticleRepository extends JpaRepository<Article, Long> {
+    List<Article> findAllByAuthorId(Long authorId);
+
+    @Query(
+            "SELECT a FROM Article a "
+            +  " JOIN a.author u JOIN Follow f"
+            +  " ON u.id = f.followee.id "
+            +  " WHERE f.follower.id = :authorId"
+            +  " ORDER BY a.createdAt DESC "
+    )
+    List<Article> findAllByFollowerId(Long followerId);
+}

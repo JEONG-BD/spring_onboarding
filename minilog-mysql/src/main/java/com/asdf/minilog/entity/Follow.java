@@ -33,11 +33,11 @@ public class Follow {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "follower_id", nullable = false)
-    private User follwer;
+    private User follower;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "followee_id", nullable = false)
-    private User follwee;
+    private User followee;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)

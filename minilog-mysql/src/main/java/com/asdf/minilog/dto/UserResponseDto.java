@@ -8,6 +8,6 @@ import lombok.NonNull;
 @Builder
 public class UserResponseDto {
 
-    @NonNull private Long id;
-    @NonNull private String username;
+  @NonNull private Long id;
+  @NonNull private String username;
 }

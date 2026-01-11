@@ -31,7 +31,10 @@ public class MinillogUserDetailService implements UserDetailsService {
                 .orElseThrow(() -> new UserNotFoundException(
                         String.format("User not found with user name : " + username)));
 
-        List<GrantedAuthority> authorities =user.getRoles().stream().map(MinilogGrantedAuthority::new).collect(Collector.toList());
+        List<GrantedAuthority> authorities = user.getRoles()
+                .stream()
+                .map(MinilogGrantedAuthority::new)
+                .toList();
 
         return new MinilogUserDetails(user.getId(), username, user.getPassword(), authorities);
     }

@@ -14,9 +14,11 @@ import java.util.function.Function;
 
 import io.jsonwebtoken.Claims;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
 import javax.crypto.spec.SecretKeySpec;
 
+@Component
 public class JwtUtil implements Serializable {
 
     private static final long serialVersionUUID = -2550185165626007488L;
@@ -64,7 +66,7 @@ public class JwtUtil implements Serializable {
         return expiration.before(new Date());
     }
 
-    public String geenrateToken(UserDetails userDetails, Long userId){
+    public String generateToken(UserDetails userDetails, Long userId){
         Map<String, Object> claims = new HashMap<>();
         claims.put("userId", userId);
 

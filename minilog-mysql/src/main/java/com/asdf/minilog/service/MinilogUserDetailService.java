@@ -10,17 +10,18 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
-public class MinillogUserDetailService implements UserDetailsService {
+@Service
+public class MinilogUserDetailService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
     @Autowired
-    public MinillogUserDetailService(UserRepository userRepository) {
+    public MinilogUserDetailService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -34,7 +35,7 @@ public class MinillogUserDetailService implements UserDetailsService {
         List<GrantedAuthority> authorities = user.getRoles()
                 .stream()
                 .map(MinilogGrantedAuthority::new)
-                .toList();
+                .collect(Collectors.toList());
 
         return new MinilogUserDetails(user.getId(), username, user.getPassword(), authorities);
     }
